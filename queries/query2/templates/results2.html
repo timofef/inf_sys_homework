@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>Working with db</title>
+</head>
+<body bgcolor=silver text=black>
+<br><br>
+<h2>Результаты</h2>
+<br><br>
+<p>Номер договора клиента: {{client}} </p>
+<table border=1 width=80%>
+    <tr>
+        <td align=center> Фамилия</td>
+        <td align=center> Дата перевозки</td>
+    </tr>
+    {%for row in rows%}
+    <tr>
+        <td align=center> {{row['surname']}}</td>
+        <td align=center> {{row['delivery_date']}}</td>
+    </tr>
+    {% endfor %}
+</table>
+<br><br>
+<a href="/queries"> Назад в меню запросов</a><br>
+<a href="/query2"> Назад к форме ввода</a>
+</body>
+</html>

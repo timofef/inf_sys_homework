@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>Working with db</title>
+</head>
+<body bgcolor=silver text=black>
+<br><br>
+<h5>Отчет о перевозке грузов в марте 2017 года по форме: Фамилия водителя, кол-во поездок, общий вес
+    перевезенных грузов.</h5>
+<br><br>
+<table border=1 width=80%>
+    <tr>
+        <td align=center> Фамилия</td>
+        <td align=center> Кол-во поездок</td>
+        <td align=center> Общий вес перевезенных грузов</td>
+    </tr>
+    {%for row in rows%}
+    <tr>
+        <td align=center> {{row['surname']}}</td>
+        <td align=center> {{row['trans_num']}}</td>
+        <td align=center> {{row['total_weight']}}</td>
+    </tr>
+    {% endfor %}
+</table>
+<br><br>
+<a href="/queries"> Назад в меню запросов</a>
+</body>
+</html>

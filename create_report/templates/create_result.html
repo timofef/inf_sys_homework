@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>Working with db</title>
+</head>
+<body bgcolor=silver text=black>
+<br><br>
+<h2>Результаты</h2>
+<br>
+<p>Отчет за {{year}} год{%if alreadyExisted%} обновлён{%else%} создан{%endif%}</p>
+<br><br>
+<table border=1 width=80%>
+    <tr>
+        <td align=center> Название</td>
+        <td align=center> Количество перевозок</td>
+        <td align=center> Средний вес груза</td>
+        <td align=center> Средняя стоимость перевозки</td>
+        <td align=center> Год</td>
+    </tr>
+    {%for row in rows%}
+    <tr>
+        <td align=center> {{row['client_name']}}</td>
+        <td align=center> {{row['deliveries_sum']}}</td>
+        <td align=center> {{row['avg_weight']}}</td>
+        <td align=center> {{row['avg_cost']}}</td>
+        <td align=center> {{row['report_year']}}</td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+<a href="/create_report"> Назад к форме ввода</a>
+<a href="/menu"> Назад в главное меню</a>
+</body>
+</html>

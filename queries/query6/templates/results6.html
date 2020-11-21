@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>Working with db</title>
+  </head>
+  <body bgcolor=silver text=black>
+  <br><br>
+    <h5>Найти среднюю стоимость перевозки за одну поездку в каждом месяце 2017 года.</h5>
+    <br><br>
+    <table border =1 width = 80%>
+    <tr>
+      <td align = center> Номер месяца </td>
+      <td align = center> Средняя стоимость перевозки </td>
+    </tr>
+    {%for row in rows%}
+      <tr>
+        <td align=center> {{row['num']}} </td>
+        <td align=center> {{row['avg_cost']}} </td>
+      </tr>
+    {% endfor %}
+      </table>
+  <br><br>
+  <a href="/queries"> Назад в меню запросов</a>
+  </body>
+</html>

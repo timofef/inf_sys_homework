@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>Working with db</title>
+  </head>
+  <body bgcolor=silver text=black>
+  <br><br>
+    <h5>Показать все сведения о водителях, не перевозивших грузы в марте 2017 года.</h5>
+    <br><br>
+    <table border =1 width = 80%>
+    <tr>
+      <td align = center> Фамилия </td>
+      <td align = center> Адрес </td>
+      <td align = center> Дата рождения  </td>
+      <td align = center> Должность </td>
+      <td align = center> Дата приема на работу </td>
+    </tr>
+    {%for row in rows%}
+      <tr>
+        <td align=center> {{row['surname']}} </td>
+        <td align=center> {{row['addr']}} </td>
+        <td align=center> {{row['birthday']}} </td>
+        <td align=center> {{row['job']}} </td>
+        <td align=center> {{row['emp_date']}} </td>
+      </tr>
+    {% endfor %}
+      </table>
+  <br><br>
+  <a href="/queries"> Назад в меню запросов</a>
+  </body>
+</html>
