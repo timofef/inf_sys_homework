@@ -20,7 +20,6 @@ app.register_blueprint(auth_blueprint, url_prefix='/auth')
 
 # Меню запросов
 from queries.queries import queries_blueprint
-
 app.register_blueprint(queries_blueprint, url_prefix='/queries')
 
 # Запросы в бд

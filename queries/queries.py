@@ -1,11 +1,13 @@
-from flask import Flask, render_template, request, redirect, url_for, Blueprint, session, session
+from flask import Flask, render_template, request, redirect, url_for, Blueprint
 from check_auth import check_access
 import json
 
-queries_blueprint = Blueprint('queries_blueprint', __name__, template_folder='templates')
 
 with open('data_files/queries_menu_config.json', 'r') as f:
     queries_menu = json.load(f)
+
+
+queries_blueprint = Blueprint('queries_blueprint', __name__, template_folder='templates')
 
 
 @queries_blueprint.route('/', methods=['POST', 'GET'])
