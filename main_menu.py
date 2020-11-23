@@ -50,8 +50,8 @@ from view_report.view_report import view_report_blueprint
 app.register_blueprint(view_report_blueprint, url_prefix='/view_report')
 
 # Создание накладной
-# from create_delivery_note.create_delivery_note import create_delivery_note_blueprint
-# app.register_blueprint(create_delivery_note_blueprint, url_prefix='/create_delivery_note')
+from create_delivery_note.create_delivery_note import create_delivery_note_blueprint
+app.register_blueprint(create_delivery_note_blueprint, url_prefix='/create_delivery_note')
 
 
 @app.route('/menu/')
@@ -63,7 +63,7 @@ def menu():
                      '2': url_for('queries_blueprint.queries'),
                      '3': url_for('create_report_blueprint.create_report'),
                      '4': url_for('view_report_blueprint.view_report'),
-                     # '5': url_for('create_delivery_note_blueprint.create_delivery_note'),
+                     '5': url_for('create_delivery_note_blueprint.create_delivery_note'),
                      }
     point = request.args.get('point')
     if point is None:
