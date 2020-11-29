@@ -15,7 +15,7 @@
 
     <label for="driver">Водитель:</label>
     <select name="driver" id="driver">
-        <option value="" {% if not form[0]['driver_name'] %} selected="selected" {% endif %}>Не выбран</option>
+        <option value="" {% if not form[0]['driver_id'] %} selected="selected" {% endif %}>Не выбран</option>
         {% for dr in options['driver'] %}
         <option value="{{ dr["driver_id"] }}"
         {% if form[0]['driver_id'] == dr["driver_id"] %} selected="selected" {% endif %}> {{ dr["name"] }}</option>
@@ -26,7 +26,7 @@
 
     <label for="client">Клиент:</label>
     <select name="client" id="client">
-        <option value="" {% if not form[0]['client_name'] %} selected="selected" {% endif %}>Не выбран</option>
+        <option value="" {% if not form[0]['client_id'] %} selected="selected" {% endif %}>Не выбран</option>
         {% for cl in options['client'] %}
         <option value="{{ cl["client_id"] }}"
         {% if form[0]['client_id'] == cl["client_id"] %} selected="selected" {% endif %}> {{ cl["name"] }}</option>
@@ -37,7 +37,7 @@
 
     <label for="transport">Транспорт:</label>
     <select name="transport" id="transport">
-        <option value="" {% if not form[0]['transport_name'] %} selected="selected" {% endif %}>Не выбран</option>
+        <option value="" {% if not form[0]['transport_id'] %} selected="selected" {% endif %}>Не выбран</option>
         {% for tr in options['transport'] %}
         <option value="{{ tr["transport_id"] }}"
         {% if form[0]['transport_id'] == tr["transport_id"] %} selected="selected" {% endif %}> {{ tr["name"] }}</option>
@@ -65,7 +65,5 @@
 
     <input value='Сформировать' name='send' type='submit'>
 </form>
-
-<form><input value='Отмена' name='cancel' type='submit'></form>
 
 <a href="/menu"> Назад в главное меню</a>

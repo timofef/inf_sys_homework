@@ -1,7 +1,6 @@
 from DBCM import UseDatabase
 from flask import render_template, Blueprint, current_app, request, session
 from check_auth import check_access
-import json
 
 create_delivery_note_blueprint = Blueprint('create_delivery_note_blueprint', __name__, template_folder='templates')
 
@@ -15,27 +14,27 @@ def create_delivery_note():
         options = show_options(cursor)
         if 'send' in request.form and request.form['send'] == "Сформировать":
             delivery_date = request.form.get('date')
-            driver_id = request.form.get('driver')
-            client_id = request.form.get('client')
-            transport_id = request.form.get('transport')
+            driver = {"driver_id": request.form.get('driver'),
+                      "driver_name": ''}
+            client = {"client_id": request.form.get('client'),
+                      "client_name": ''}
+            transport = {"transport_id": request.form.get('transport'),
+                         "transport_name": ''}
             amount = request.form.get('amount')
             weight = request.form.get('weight')
 
-            if check_form(delivery_date, driver_id, client_id, transport_id, amount, weight):
+            if check_form(delivery_date, driver["driver_id"], client["client_id"], transport["transport_id"], amount, weight):
+                save_form(delivery_date, driver, client, transport, amount, weight)
                 return render_template('create_delivery_note_form.html', form=session['form'], options=options, is_filled=0)
 
-            driver = {"driver_id": driver_id,
-                      "driver_name": get_name_from_options(options, driver_id, 'driver')}
-            client = {"client_id": client_id,
-                      "client_name": get_name_from_options(options, client_id, 'client')}
-            transport = {"transport_id": transport_id,
-                         "transport_name": get_name_from_options(options, transport_id, 'transport')}
+            driver["driver_name"] = get_name_from_options(options, driver["driver_id"], 'driver')
+            client["client_name"] = get_name_from_options(options, client["client_id"], 'client')
+            transport["transport_name"] = get_name_from_options(options, transport["transport_id"], 'transport')
 
             save_form(delivery_date, driver, client, transport, amount, weight)
             return render_template('create_delivery_note_view.html', form=session['form'])
 
         elif 'create_note' in request.form and request.form['create_note'] == "Подтвердить":
-            print("\n\nADDED\n\n")
             save_into_db(cursor)
             return render_template('create_delivery_note_result.html')
 
@@ -43,7 +42,7 @@ def create_delivery_note():
             return render_template('create_delivery_note_form.html', form=session['form'], options=options, is_filled=1)
 
         elif 'cancel' in request.form and request.form['cancel'] == "Отмена":
-            session['form'].clear()
+            session['form'][0] = []
             return render_template('create_delivery_note_form.html', form=session['form'], options=options, is_filled=1)
 
         else:
@@ -60,7 +59,7 @@ def show_options(cursor):
 
 
 def get_drivers(cursor):
-    SQL = f"""SELECT personal_id, surname
+    SQL = """SELECT personal_id, surname
                   FROM personal"""
     cursor.execute(SQL)
     result = cursor.fetchall()
@@ -111,8 +110,8 @@ def check_form(*args):
 def save_form(delivery_date, driver, client, transport, amount, weight):
     session['form'].clear()
     session['form'] = [{
-        "amount": int(amount),
-        "weight": int(weight),
+        "amount": int(amount) if amount else 0,
+        "weight": int(weight) if weight else 0,
         "delivery_date": delivery_date,
         "delivery_cost": int(0),
         "driver_id": int(driver["driver_id"]),
@@ -127,8 +126,9 @@ def save_form(delivery_date, driver, client, transport, amount, weight):
 
 def save_into_db(cursor):
     SQL = f"""INSERT INTO delivery_note
-    	         VALUES (NULL, %s, %s, %s, %s, %s, %s, %s,)"""
+    	         VALUES (NULL, %s, %s, %s, %s, %s, %s, %s)"""
     values = session['form'][0].values()
     values = list(values)
-    cursor.execute(SQL, (values[0], values[1], values[2], values[3], values[4], values[5], values[6]))
+    print(values)
+    cursor.execute(SQL, (values[0], values[9], values[4], values[3], values[5], values[1], values[7]))
     return

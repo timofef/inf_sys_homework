@@ -19,7 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c6025eb-762c-4006-83e8-615a32f89f7a" name="Default Changelist" comment="" />
+    <list default="true" id="2c6025eb-762c-4006-83e8-615a32f89f7a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_delivery_note/create_delivery_note.py" beforeDir="false" afterPath="$PROJECT_DIR$/create_delivery_note/create_delivery_note.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_delivery_note/templates/create_delivery_note_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/create_delivery_note/templates/create_delivery_note_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_delivery_note/templates/create_delivery_note_view.html" beforeDir="false" afterPath="$PROJECT_DIR$/create_delivery_note/templates/create_delivery_note_view.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,6 +67,8 @@
       <option name="presentableId" value="Default" />
       <updated>1605966881229</updated>
       <workItem from="1605966882315" duration="15015000" />
+      <workItem from="1606052059792" duration="24555000" />
+      <workItem from="1606653414435" duration="794000" />
     </task>
     <servers />
   </component>
@@ -78,6 +85,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="662" y="355" width="585" height="410" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605974991233">

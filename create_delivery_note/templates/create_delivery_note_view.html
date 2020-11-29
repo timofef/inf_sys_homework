@@ -37,9 +37,15 @@
 <p>Ошибка</p>
 {% endif %}
 <br><br>
-<form><input value='Изменить' name='edit_note' type='submit' ></form>
-<form><input value='Подтвердить' name='create_note' type='submit'></form>
+<form method='POST' action=''>
+    <input value='Изменить' name='edit_note' type='submit'>
+</form>
+<form method='POST' action=''>
+    <input value='Подтвердить' name='create_note' type='submit'>
+</form>
 <br><br>
-<form><input value='Отмена' name='cancel' type='submit'></form>
+<form method='POST' action=''>
+    <input value='Отмена' name='cancel' type='submit'>
+</form>
 </body>
 </html>
