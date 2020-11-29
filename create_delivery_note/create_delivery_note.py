@@ -109,11 +109,13 @@ def check_form(*args):
 
 def save_form(delivery_date, driver, client, transport, amount, weight):
     session['form'].clear()
+    new_amount = int(amount) if amount else 0
+    new_weight = int(weight) if weight else 0
     session['form'] = [{
-        "amount": int(amount) if amount else 0,
-        "weight": int(weight) if weight else 0,
+        "amount": new_amount,
+        "weight": new_weight,
         "delivery_date": delivery_date,
-        "delivery_cost": int(0),
+        "delivery_cost": 100*new_weight,
         "driver_id": int(driver["driver_id"]),
         "client_id": int(client["client_id"]),
         "transport_id": int(transport["transport_id"]),
