@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, Blueprint
-from check_auth import check_access
+from auth.auth import check_access
 import json
 
 

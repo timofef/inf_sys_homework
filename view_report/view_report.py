@@ -1,6 +1,6 @@
 from DBCM import UseDatabase
 from flask import render_template, Blueprint, current_app, request
-from check_auth import check_access
+from auth.auth import check_access
 
 view_report_blueprint = Blueprint('view_report_blueprint', __name__, template_folder='templates')
 

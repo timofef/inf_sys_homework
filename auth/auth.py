@@ -1,3 +1,4 @@
+from functools import wraps
 from flask import Blueprint, redirect, render_template, session, request, current_app
 from DBCM import UseDatabase
 
@@ -28,3 +29,16 @@ def authorization():
                 return render_template('auth.html', status=1)
     else:
         return render_template('auth.html', status=0)
+
+
+def check_access(point):
+    def _check_access(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            role_mapping = current_app.config['point_access']
+            if session['user_group'] not in role_mapping[point]:
+                return render_template('access_denied.html', needed=" или ".join(role_mapping[point]))
+            else:
+                return func(*args, **kwargs)
+        return wrapper
+    return _check_access

@@ -1,6 +1,6 @@
 from DBCM import UseDatabase
 from flask import render_template, Blueprint, current_app, request, session
-from check_auth import check_access
+from auth.auth import check_access
 
 create_delivery_note_blueprint = Blueprint('create_delivery_note_blueprint', __name__, template_folder='templates')
 
