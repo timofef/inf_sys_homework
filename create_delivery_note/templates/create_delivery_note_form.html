@@ -6,56 +6,81 @@
 <h2>Создание накладной</h2>
 <br><br>
 <form method='POST' action=''>
-    <label for="date">Дата перевозки:</label>
-    <input type="date" id="date" name="date"
-           value={% if form[0]['delivery_date'] %} {{ form[0]['delivery_date'] }} {% else %} "2020-01-01" {% endif %}
+    <table>
+        <tr>
+            <td align="right">
+                <label for="date">Дата перевозки:</label>
+            </td>
+            <td>
+                <input type="date" id="date" name="date"
+           value={% if form[0]['delivery_date'] %} {{ form[0]['delivery_date'] }} {% else %} "2020-12-01" {% endif %}
     min="2018-01-01">
+            </td>
+        </tr>
 
-    <br>
-
-    <label for="driver">Водитель:</label>
-    <select name="driver" id="driver">
+        <tr>
+            <td align="right">
+                <label for="driver">Водитель:</label>
+            </td>
+            <td>
+                <select name="driver" id="driver">
         <option value="" {% if not form[0]['driver_id'] %} selected="selected" {% endif %}>Не выбран</option>
         {% for dr in options['driver'] %}
         <option value="{{ dr["driver_id"] }}"
         {% if form[0]['driver_id'] == dr["driver_id"] %} selected="selected" {% endif %}> {{ dr["name"] }}</option>
         {% endfor %}
     </select>
+            </td>
+        </tr>
 
-    <br>
-
-    <label for="client">Клиент:</label>
-    <select name="client" id="client">
+        <tr>
+            <td align="right">
+                <label for="client">Клиент:</label>
+            </td>
+            <td>
+                <select name="client" id="client">
         <option value="" {% if not form[0]['client_id'] %} selected="selected" {% endif %}>Не выбран</option>
         {% for cl in options['client'] %}
         <option value="{{ cl["client_id"] }}"
         {% if form[0]['client_id'] == cl["client_id"] %} selected="selected" {% endif %}> {{ cl["name"] }}</option>
         {% endfor %}
     </select>
+            </td>
+        </tr>
 
-    <br>
-
-    <label for="transport">Транспорт:</label>
-    <select name="transport" id="transport">
+        <tr>
+            <td align="right">
+                <label for="transport">Транспорт:</label>
+            </td>
+            <td>
+                <select name="transport" id="transport">
         <option value="" {% if not form[0]['transport_id'] %} selected="selected" {% endif %}>Не выбран</option>
         {% for tr in options['transport'] %}
         <option value="{{ tr["transport_id"] }}"
         {% if form[0]['transport_id'] == tr["transport_id"] %} selected="selected" {% endif %}> {{ tr["name"] }}</option>
         {% endfor %}
     </select>
+            </td>
+        </tr>
 
-    <br>
+        <tr>
+            <td align="right">
+                <label for=amount>Количество ящиков: </label>
+            </td>
+            <td>
+                <input autocomplete="off" type=text id=amount name=amount {% if form[0]['amount'] %} value="{{ form[0]['amount'] }}" {% endif %}>
+            </td>
+        </tr>
 
-    <label for=amount>Количество ящиков: </label>
-    <input type=text id=amount name=amount {% if form[0]['amount'] %} value="{{ form[0]['amount'] }}" {% endif %}>
-
-    <br>
-
-    <label for=weight>Общий вес груза (кг): </label>
-    <input type=text id=weight name=weight  {% if form[0]['weight'] %} value="{{ form[0]['weight'] }}" {% endif %}>
+        <tr>
+            <td align="right">
+                <label for=weight>Общий вес груза (кг): </label>
+            </td>
+            <td>
+                <input autocomplete="off" type=text id=weight name=weight  {% if form[0]['weight'] %} value="{{ form[0]['weight'] }}" {% endif %}>
+            </td>
+        </tr>
     </table>
-
-    <br>
 
     {% if not is_filled %}
     <p style="color:red;"> Необходимо заполнить все поля </p>
@@ -65,5 +90,5 @@
 
     <input value='Сформировать' name='send' type='submit'>
 </form>
-
+<br>
 <a href="/menu"> Назад в главное меню</a>

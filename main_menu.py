@@ -15,7 +15,6 @@ app.config['point_access'] = point_access_items
 
 # Страница авторизации
 from auth.auth import auth_blueprint
-
 app.register_blueprint(auth_blueprint, url_prefix='/auth')
 
 # Меню запросов

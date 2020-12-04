@@ -9,7 +9,7 @@ create_delivery_note_blueprint = Blueprint('create_delivery_note_blueprint', __n
 @check_access("5")
 def create_delivery_note():
     if 'form' not in session:
-        session['form'] = []
+        session['form'][0] = []
     with UseDatabase(current_app.config['dbconfig']["Manager"]) as cursor:
         options = show_options(cursor)
         if 'send' in request.form and request.form['send'] == "Сформировать":
@@ -32,7 +32,7 @@ def create_delivery_note():
             transport["transport_name"] = get_name_from_options(options, transport["transport_id"], 'transport')
 
             save_form(delivery_date, driver, client, transport, amount, weight)
-            return render_template('create_delivery_note_view.html', form=session['form'])
+            return render_template('create_delivery_note_confirm.html', form=session['form'])
 
         elif 'create_note' in request.form and request.form['create_note'] == "Подтвердить":
             save_into_db(cursor)
@@ -42,7 +42,8 @@ def create_delivery_note():
             return render_template('create_delivery_note_form.html', form=session['form'], options=options, is_filled=1)
 
         elif 'cancel' in request.form and request.form['cancel'] == "Отмена":
-            session['form'][0] = []
+            session['form'].clear()
+            session['form'] = [{}]
             return render_template('create_delivery_note_form.html', form=session['form'], options=options, is_filled=1)
 
         else:
@@ -109,16 +110,19 @@ def check_form(*args):
 
 def save_form(delivery_date, driver, client, transport, amount, weight):
     session['form'].clear()
+    new_driver_id = int(driver["driver_id"]) if driver["driver_id"] else 0
+    new_client_id = int(client["client_id"]) if client["client_id"] else 0
+    new_transport_id = int(transport["transport_id"]) if transport["transport_id"] else 0
     new_amount = int(amount) if amount else 0
     new_weight = int(weight) if weight else 0
     session['form'] = [{
         "amount": new_amount,
         "weight": new_weight,
         "delivery_date": delivery_date,
-        "delivery_cost": 100*new_weight,
-        "driver_id": int(driver["driver_id"]),
-        "client_id": int(client["client_id"]),
-        "transport_id": int(transport["transport_id"]),
+        "delivery_cost": 20*new_weight,
+        "driver_id": new_driver_id,
+        "client_id": new_client_id,
+        "transport_id": new_transport_id,
         "driver_name": driver["driver_name"],
         "client_name": client["client_name"],
         "transport_name": transport["transport_name"],

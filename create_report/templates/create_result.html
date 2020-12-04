@@ -3,7 +3,6 @@
     <title>Working with db</title>
 </head>
 <body bgcolor=silver text=black>
-<br><br>
 <h2>Результаты</h2>
 <br>
 <p>Отчет за {{year}} год{%if alreadyExisted%} обновлён{%else%} создан{%endif%}</p>
@@ -26,8 +25,9 @@
     </tr>
     {% endfor %}
 </table>
-<br>
+<br><br>
 <a href="/create_report"> Назад к форме ввода</a>
+<br><br>
 <a href="/menu"> Назад в главное меню</a>
 </body>
 </html>

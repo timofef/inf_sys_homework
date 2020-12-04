@@ -21,9 +21,15 @@
   <component name="ChangeListManager">
     <list default="true" id="2c6025eb-762c-4006-83e8-615a32f89f7a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/auth/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DBCM.py" beforeDir="false" afterPath="$PROJECT_DIR$/DBCM.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_delivery_note/create_delivery_note.py" beforeDir="false" afterPath="$PROJECT_DIR$/create_delivery_note/create_delivery_note.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_delivery_note/templates/create_delivery_note_confirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/create_delivery_note/templates/create_delivery_note_confirm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_delivery_note/templates/create_delivery_note_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/create_delivery_note/templates/create_delivery_note_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_delivery_note/templates/create_delivery_note_view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_report/templates/create_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/create_report/templates/create_result.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/queries/queries.py" beforeDir="false" afterPath="$PROJECT_DIR$/queries/queries_menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/access_denied.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/access_denied.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view_report/templates/view_report_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/view_report/templates/view_report_result.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +56,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
@@ -70,6 +77,9 @@
       <workItem from="1606052059792" duration="24555000" />
       <workItem from="1606653414435" duration="4469000" />
       <workItem from="1607008791878" duration="666000" />
+      <workItem from="1607065296293" duration="379000" />
+      <workItem from="1607075211699" duration="2356000" />
+      <workItem from="1607088066475" duration="4834000" />
     </task>
     <servers />
   </component>
@@ -87,11 +97,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="662" y="355" width="585" height="410" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605974991233">
-      <screen x="0" y="27" width="1920" height="1053" />
-    </state>
-    <state x="662" y="355" width="585" height="410" key="#com.intellij.fileTypes.FileTypeChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1605974991233" />
   </component>
 </project>
